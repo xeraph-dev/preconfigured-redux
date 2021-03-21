@@ -1,18 +1,25 @@
 # Estado global pre configurado para reactjs con redux-toolkit
 
 > Nota: uso localforage por los beneficios que ofrece al manejar las 3 bases de datos del navegador en este orden
+>
 > #### IndexedDB (si el navegador lo soporta)
+>
 > #### WebSQL (si el navegador lo soporta)
+>
 > ##### LocalStorage
+>
 > Pero si no quieres usarlo, puedes usar el que ofrece redux-persist, aunque solo usa localStorage
 
 ## Librerías necesarias
+
 ```npm
 npm i @reduxjs/toolkit react-redux localforage
 ```
+
 ## Si usas redux persist
+
 ```npm
-npm i @reduxjs/toolkit react-redux redux-persist localforage 
+npm i @reduxjs/toolkit react-redux redux-persist localforage
 ```
 
 ## Como usar
@@ -31,22 +38,29 @@ export default function App() {
 #### Componente.jsx
 
 ```jsx
-import { getTheme } from "path/store"
-import { useSelector, useDispatch } from 'react-redux'
+import { getTheme } from "path/store";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Componente() {
-    const theme = useSelector(getTheme)
-    const dispatch = useDispatch()
+  const theme = useSelector(getTheme);
+  const dispatch = useDispatch();
 
-    const handleClick = () => dispatch(setTheme(!theme))
-    
-    // Example with trunks
-    const handleClickWithTrunks = ()=> dispatch(setTheme(!theme)).then(()=>{}).catch(e=>console.log(e))
+  const handleClick = () => dispatch(setTheme(!theme));
 
+  // Ejemplo con trunks
+  const handleClickWithTrunks = () =>
+    dispatch(setTheme(!theme))
+      .then(() => {})
+      .catch((e) => console.log(e));
 
-    return  <button style={{ backgroundColor: theme ? "#333" : "#ddd" }} onClick={handleCLick}>
-                Cambiar tema
-            </button>
+  return (
+    <button
+      style={{ backgroundColor: theme ? "#333" : "#ddd" }}
+      onClick={handleCLick}
+    >
+      Cambiar tema
+    </button>
+  );
 }
 ```
 
